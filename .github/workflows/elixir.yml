@@ -1,4 +1,4 @@
-name: Elixir CI
+name: Scaffolding Actions
 
 on: [push, pull_request]
 
@@ -8,10 +8,33 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v2
+      - uses: actions/setup-elixir@v1
         with:
           elixir-version: '1.16.2'
           otp-version: '26'
       - run: mix deps.get
       - run: mix compile
+
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:11
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-elixir@v1
+        with:
+          elixir-version: '1.16.2'
+          otp-version: '26'
+      - run: mix deps.get
       - run: mix test
