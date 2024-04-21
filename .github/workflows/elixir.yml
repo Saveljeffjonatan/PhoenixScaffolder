@@ -12,6 +12,6 @@ jobs:
         with:
           elixir-version: '1.16.2'
           otp-version: '26'
-      - runs: mix deps.get
-      - runs: mix compile
-      - runs: mix test
+      - run: mix deps.get
+      - run: mix compile
+      - run: mix test
