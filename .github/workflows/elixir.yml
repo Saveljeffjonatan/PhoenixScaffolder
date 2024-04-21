@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v2
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
         with:
           elixir-version: '1.16.2'
           otp-version: '26'
@@ -31,8 +31,8 @@ jobs:
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v2
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
         with:
           elixir-version: '1.16.2'
           otp-version: '26'
