@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
+      - uses: actions/setup-elixir@v2
         with:
           elixir-version: '1.16.2'
           otp-version: '26'
@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
+      - uses: actions/setup-elixir@v2
         with:
           elixir-version: '1.16.2'
           otp-version: '26'
